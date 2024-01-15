@@ -1,12 +1,21 @@
-import { useState} from 'react'
+import { useContext, useState} from 'react'
 import dtec from '../../imagens/dtec.png'
 import {Link} from 'react-router-dom'
+import { AuthContext } from '../../contexts/auth';
 
 export default function SignUp(){
 
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+
+    const { signUp } = useContext(AuthContext)
+
+    function handleSignUp(e){
+        e.preventDefault();
+
+        signUp()
+    }
 
     return(
         <div className='container-center'>
@@ -15,7 +24,7 @@ export default function SignUp(){
                     <img src={dtec} alt='Diretoria de Tecnologia' />
                 </div>
 
-                <form>
+                <form onSubmit={handleSignUp}>
                     <h1>Novo Usuário</h1>
 
                     <input
