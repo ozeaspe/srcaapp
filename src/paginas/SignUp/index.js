@@ -9,12 +9,12 @@ export default function SignUp(){
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
-    const { signUp } = useContext(AuthContext)
+    const { signUp, loadingAuth } = useContext(AuthContext)
 
-    function handleSignUp(e){
+    async function handleSignUp(e){
         e.preventDefault();
 
-        signUp()
+        await signUp(email, senha, nome)
     }
 
     return(
@@ -48,7 +48,9 @@ export default function SignUp(){
                         onChange={ (e) => setSenha(e.target.value)}
                     />
 
-                    <button type='submit'>Cadastrar</button>
+                    <button type='submit'>
+                        {loadingAuth ? 'Carregando...' : 'Cadastrar'}
+                    </button>
 
                 </form>
 
