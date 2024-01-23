@@ -20,8 +20,27 @@ function AuthProvider ({ children }){
     
     //Criando um spinner, para controlar quando o usuário estiver cadastrando
     const[loadingAuth, setLoadingAuth] = useState(false);
+    
+    //Criando um loading para começar carregando as informações do usuário 
+    const[loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
+
+    // Usando useEffect para permanecer com login
+    useEffect(() => {
+        async function loadUser(){
+            const storageUser = localStorage.getItem('@ticketsPro')
+
+            if(storageUser){
+                setUser(JSON.parse(storageUser))
+                setLoading(false);
+            }
+
+            setLoading(false);
+        }
+
+        loadUser();
+    }, [])
 
 
     async function signIn(email, senha){
@@ -94,6 +113,12 @@ function AuthProvider ({ children }){
         localStorage.setItem('@ticketsPro', JSON.stringify(data))
     } 
 
+    async function logout(){
+        await signOut(auth);
+        localStorage.removeItem('@ticketsPro');
+        setUser(null);
+    }
+
     return (
         <AuthContext.Provider
             value={{
@@ -102,7 +127,10 @@ function AuthProvider ({ children }){
                 signIn,
                 signUp,
                 loadingAuth,
+                loading,
+                logout,
                 storageUser
+                
             }}
         >
             {children}
