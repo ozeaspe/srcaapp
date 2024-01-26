@@ -24,3 +24,5 @@ Para testar se a CLI está instalada corretamente e acessando sua conta, liste s
 7 - Depois de criar as páginas de login e cadastrar usuário, criar rotas privadas para que apenas usuários logados possam acessar a página.
 
 8 - Para criar a rotas privadas dentro da pasta routers criar um arquivo private.js
+
+9 - criando o header é necessário instalar a biblioteca react-icons==> npm install react-icons, para acessar os tipos de ícones.
