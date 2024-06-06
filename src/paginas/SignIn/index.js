@@ -3,6 +3,7 @@ import './signin.css'
 import dtec from '../../imagens/dtec.png'
 import {Link} from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth'
+import { toast } from 'react-toastify'
 
 export default function SignIn(){
 
@@ -17,6 +18,13 @@ export default function SignIn(){
         if(email !== ''  && senha !== ''){
             signIn(email, senha);
 
+        }if(email === '' && senha !== ''){
+            toast.error("Digite o email!")
+        }if(senha === '' && email !== ''){
+            toast.error("Digite a senha!")
+        }
+        if(email === '' && senha === ''){
+            toast.error("É necessário criar uma conta!")
         }
     }
 

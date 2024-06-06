@@ -2,6 +2,7 @@ import { useContext, useState} from 'react'
 import dtec from '../../imagens/dtec.png'
 import {Link} from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth';
+import { toast } from 'react-toastify';
 
 export default function SignUp(){
 
@@ -14,7 +15,22 @@ export default function SignUp(){
     async function handleSignUp(e){
         e.preventDefault();
 
+    if(nome !== '' && email !== '' && senha !== ''){
         await signUp(email, senha, nome)
+    }if(nome === '' && email !== '' && senha !== ''){
+        toast.error("Obrigatório preencher o campo em branco!")
+    }if(nome === '' && email === '' && senha !== ''){
+        toast.error("Obrigatório preencher os campos em branco!")
+    }if(nome !== '' && email === '' && senha === ''){
+        toast.error("Obrigatório preencher os campos em branco!")
+    }if(nome !== '' && email === '' && senha !== ''){
+        toast.error("Obrigatório preencher o campo em branco!")
+    }if(nome !== '' && email !== '' && senha === ''){
+        toast.error("Obrigatório preencher o campo em branco!")
+    }if(nome === '' && email === '' && senha === ''){
+        toast.error("Obrigatório preencher os campos em branco!")
+    }
+
     }
 
     return(
