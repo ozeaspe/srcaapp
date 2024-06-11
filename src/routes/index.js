@@ -3,6 +3,7 @@ import{ Routes, Route} from 'react-router-dom'
 import SignIn from '../paginas/SignIn';
 import SignUp from '../paginas/SignUp';
 import Dashboard from '../paginas/Dashboard';
+import Profile from '../paginas/Profile';
 import Private from './Private';
 
 function RoutesApp(){
@@ -11,6 +12,7 @@ function RoutesApp(){
             <Route path='/' element={<SignIn/>} />
             <Route path='/register' element={<SignUp/>} />
             <Route path='/dashboard' element={<Private><Dashboard/></Private>}/>
+            <Route path='/profile' element={<Profile/>}></Route>
         </Routes>
     )
 }
