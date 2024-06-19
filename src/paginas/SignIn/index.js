@@ -10,7 +10,7 @@ export default function SignIn(){
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
-    const { signIn } = useContext(AuthContext)
+    const { signIn, loadingAuth } = useContext(AuthContext)
 
     function handleSignIn(e){
         e.preventDefault();
@@ -51,7 +51,9 @@ export default function SignIn(){
                         onChange={ (e) => setSenha(e.target.value)}
                     />
 
-                    <button type='submit'>Login</button>
+                    <button type='submit'>
+                        {loadingAuth ? "Carregando..." : "Acessar"}
+                    </button>
 
                 </form>
 

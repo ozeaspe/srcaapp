@@ -1,6 +1,6 @@
 .container{
     display: flex;
-    background-color: #f8f8f8;
+    background-color: #e3e4e4;
     border-radius: 5px;
     padding: 0.8em;
     align-items: center;
@@ -74,7 +74,7 @@
 
   .container-btn{
     display: flex;
-    background-color: #f8f8f8;
+    background-color: #e3e4e4;
     border-radius: 5px;
     padding: 0.8em;
     align-items: center;
